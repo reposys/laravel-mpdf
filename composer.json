@@ -1,6 +1,5 @@
 {
     "name": "reposys/laravel-pdf",
-    "version": "v1.5.2",
     "description": "Generate PDFs in Laravel with this mPDF wrapper.",
     "keywords": ["mpdf", "pdf", "laravel"],
     "license": "MIT",
