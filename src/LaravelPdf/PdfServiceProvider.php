@@ -21,8 +21,28 @@ class PdfServiceProvider extends BaseServiceProvider {
      */
     public function register()
     {
-        define('_MPDF_TEMP_PATH', storage_path('framework/mpdf/images/'));
-        define('_MPDF_TTFONTDATAPATH', storage_path('framework/mpdf/fonts/'));
+        $pathImages = storage_path('framework/mpdf/images/');
+        $pathFonts = storage_path('framework/mpdf/fonts/');
+
+        if (!is_dir($pathImages))
+        {
+            @mkdir($pathImages, 0777);
+        }
+
+        if (!is_dir($pathFonts))
+        {
+            @mkdir($pathFonts, 0777);
+        }
+
+        if (!defined('_MPDF_TEMP_PATH') && is_dir($pathImages))
+        {
+            define('_MPDF_TEMP_PATH', $pathImages);
+        }
+
+        if (!defined('_MPDF_TTFONTDATAPATH') && is_dir($pathFonts))
+        {
+            define('_MPDF_TTFONTDATAPATH', $pathFonts);
+        }
 
         $this->mergeConfigFrom(
             __DIR__ . '/../config/pdf.php', 'pdf'
