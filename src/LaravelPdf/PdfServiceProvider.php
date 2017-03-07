@@ -26,12 +26,12 @@ class PdfServiceProvider extends BaseServiceProvider {
 
         if (!is_dir($pathImages))
         {
-            @mkdir($pathImages, 0777);
+            @mkdir($pathImages, 0777, true);
         }
 
         if (!is_dir($pathFonts))
         {
-            @mkdir($pathFonts, 0777);
+            @mkdir($pathFonts, 0777, true);
         }
 
         if (!defined('_MPDF_TEMP_PATH') && is_dir($pathImages))
